@@ -28,8 +28,11 @@ public class Move : MonoBehaviour
         {
             FireFly.transform.rotation = new Quaternion(0, 0, 0, 1);
         }
-        var move = new Vector3(xAchse, yAchse);
-        transform.Translate(move*speed * Time.deltaTime);
+       
+            var move = new Vector3(xAchse, yAchse);
+            transform.Translate(move * speed * Time.deltaTime);
+        
+        
         
 
 
