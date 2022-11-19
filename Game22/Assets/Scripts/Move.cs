@@ -6,21 +6,34 @@ public class Move : MonoBehaviour
 {
     public float speed = 10f;
     float xAchse = 0f;
-    float zAchse = 0f;
+    float yAchse = 0f;
+    GameObject FireFly;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //FireFly = GameObject.Find("firefly");
+        FireFly = gameObject.transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
         xAchse = Input.GetAxis("Horizontal");
-        zAchse = Input.GetAxis("Vertical");
-        var move = new Vector3(xAchse, zAchse);
+        yAchse = Input.GetAxis("Vertical");
+        if(xAchse > 0)
+        {
+            FireFly.transform.rotation = new Quaternion( 0, 180, 0,1);
+        }
+        else
+        {
+            FireFly.transform.rotation = new Quaternion(0, 0, 0, 1);
+        }
+        var move = new Vector3(xAchse, yAchse);
         transform.Translate(move*speed * Time.deltaTime);
+        Debug.Log("Bewegen: " + move);
         
+
+
     }
 }

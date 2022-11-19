@@ -12,6 +12,7 @@ public class Companian : MonoBehaviour
     public float period = 0.5f;
     public float speed = 2f;
     public float radius = 3f;
+    GameObject FireFly;
 
 
     // Start is called before the first frame update
@@ -19,18 +20,18 @@ public class Companian : MonoBehaviour
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         isFound = false;
-     
         padding = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
+        FireFly = gameObject.transform.GetChild(1).gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
         FollowPlayer();
- 
-       // WobbelJannik();
-    
-      
+       
+        // WobbelJannik();
+
+
     }
     private void FollowPlayer()
     {
@@ -38,6 +39,7 @@ public class Companian : MonoBehaviour
         {
             nextActionTime += period;
             padding = new Vector3(Random.Range(-radius, radius), Random.Range(-radius, radius), 0f);
+            RotateImage(padding.x);
         }
        
 
@@ -46,21 +48,32 @@ public class Companian : MonoBehaviour
             offset = (Player.transform.position + padding) - transform.position;
             var move = new Vector3(offset.x, offset.y, 0) * Time.deltaTime * speed;
             transform.Translate(move);
+            RotateImage(offset.x);
 
+
+
+            
         }
+        
 
     }
-    private void WobbelJannik()
-    {
-        Vector3 direktien = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
-        var move = new Vector3(direktien.x, direktien.y, 0) * Time.deltaTime * 3f;
-        transform.Translate(move);
-    }
+  
     private void OnTriggerEnter2D(Collider2D collision)
     {
         isFound = true;
         GetComponent<CircleCollider2D>().enabled = false;
         
+    }
+    private void RotateImage(float x)
+    {
+        if (x > 0)
+        {
+            FireFly.transform.rotation = new Quaternion(0, 180, 0, 1);
+        }
+        else
+        {
+            FireFly.transform.rotation = new Quaternion(0, 0, 0, 1);
+        }
     }
 
 }
