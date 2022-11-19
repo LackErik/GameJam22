@@ -8,11 +8,15 @@ public class Move : MonoBehaviour
     float xAchse = 0f;
     float yAchse = 0f;
     GameObject FireFly;
+    SpriteRenderer sr;
+    public Sprite normalFly;
+    public Sprite pushFly;
 
     // Start is called before the first frame update
     void Start()
     {
         FireFly = gameObject.transform.GetChild(1).gameObject;
+        sr = FireFly.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -31,10 +35,18 @@ public class Move : MonoBehaviour
        
             var move = new Vector3(xAchse, yAchse);
             transform.Translate(move * speed * Time.deltaTime);
-        
-        
-        
 
+     
 
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        sr.sprite = pushFly;
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        sr.sprite = normalFly;
+    }
+
 }
