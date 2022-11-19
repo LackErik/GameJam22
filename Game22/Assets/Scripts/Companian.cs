@@ -12,7 +12,7 @@ public class Companian : MonoBehaviour
     public float period = 0.5f;
     public float speed = 2f;
     public float radius = 3f;
-    public static int anzahl = 0;
+    public static int anzahl = 1;
     GameObject FireFly;
 
 
