@@ -12,6 +12,7 @@ public class Companian : MonoBehaviour
     public float period = 0.5f;
     public float speed = 2f;
     public float radius = 3f;
+    public static int anzahl = 0;
     GameObject FireFly;
 
 
@@ -60,8 +61,14 @@ public class Companian : MonoBehaviour
   
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isFound = true;
-        GetComponent<CircleCollider2D>().enabled = false;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            isFound = true;
+            GetComponent<CircleCollider2D>().enabled = false;
+            anzahl++;
+            Debug.Log(anzahl);
+        }
+    
         
     }
     private void RotateImage(float x)

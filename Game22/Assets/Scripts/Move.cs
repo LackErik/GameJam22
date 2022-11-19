@@ -12,7 +12,6 @@ public class Move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //FireFly = GameObject.Find("firefly");
         FireFly = gameObject.transform.GetChild(1).gameObject;
     }
 
@@ -31,7 +30,6 @@ public class Move : MonoBehaviour
         }
         var move = new Vector3(xAchse, yAchse);
         transform.Translate(move*speed * Time.deltaTime);
-        Debug.Log("Bewegen: " + move);
         
 
 
