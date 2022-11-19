@@ -29,6 +29,8 @@ public class Companian : MonoBehaviour
     void Update()
     {
         FollowPlayer();
+       
+        // WobbelJannik();
 
 
     }
@@ -48,6 +50,9 @@ public class Companian : MonoBehaviour
             var move = new Vector3(offset.x, offset.y, 0) * Time.deltaTime * speed;
             transform.Translate(move);
             RotateImage(offset.x);
+
+
+
             
         }
         
@@ -61,6 +66,7 @@ public class Companian : MonoBehaviour
             isFound = true;
             GetComponent<CircleCollider2D>().enabled = false;
             anzahl++;
+            Debug.Log(anzahl);
         }
     
         
