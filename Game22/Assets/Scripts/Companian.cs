@@ -82,5 +82,11 @@ public class Companian : MonoBehaviour
             FireFly.transform.rotation = new Quaternion(0, 0, 0, 1);
         }
     }
+    private void HappyAnim()
+    {
+
+
+
+    }
 
 }
