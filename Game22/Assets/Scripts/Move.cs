@@ -40,9 +40,9 @@ public class Move : MonoBehaviour
         Controlle();
     }
 
-    private void LookDirection() 
+    private void LookDirection()
     {
-        
+
 
         if (xAchse > 0)
         {
@@ -50,7 +50,7 @@ public class Move : MonoBehaviour
         }
         else
         {
-          
+
             FireFly.transform.rotation = new Quaternion(0, 0, 0, 1);
         }
     }
@@ -70,21 +70,21 @@ public class Move : MonoBehaviour
             nextActionTime += period;
             if (timeCounter == blinkPeriod)
             {
-                if(sr.sprite == normalFly)
+                if (sr.sprite == normalFly)
                 {
                     sr.sprite = blinkFly;
                 }
-              
+
                 timeCounter = 0;
                 blinkPeriod = Mathf.RoundToInt(Random.Range(5f, 9f));
             }
             else
             {
-                if(sr.sprite == blinkFly)
+                if (sr.sprite == blinkFly)
                 {
                     sr.sprite = normalFly;
                 }
-                
+
             }
         }
 
