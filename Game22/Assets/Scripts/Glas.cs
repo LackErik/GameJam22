@@ -11,6 +11,8 @@ public class Glas : MonoBehaviour
     public Sprite glasStay;
     public Sprite glasFall;
     public GameObject prefab;
+    public GameObject light;
+
    
 
     // Start is called before the first frame update
@@ -19,6 +21,7 @@ public class Glas : MonoBehaviour
         eventPass = false;
        
         sr = gameObject.GetComponent<SpriteRenderer>();
+       
 
     }
 
@@ -45,6 +48,7 @@ public class Glas : MonoBehaviour
                 startSpawner();
                 gameObject.GetComponents<BoxCollider2D>()[0].enabled = false;
                 gameObject.GetComponents<BoxCollider2D>()[1].enabled = false;
+                Destroy(light);
 
             }
         }
