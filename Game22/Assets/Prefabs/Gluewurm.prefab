@@ -69,6 +69,7 @@ MonoBehaviour:
   normal: {fileID: 21300000, guid: 3d68e00b297e6c940ace2e958a356dd6, type: 3}
   Happy1: {fileID: 21300000, guid: 382762c41abba7d49889d400bdd0e958, type: 3}
   Happy2: {fileID: 21300000, guid: 1ff8ab0b597bf3e4bbef479f2e1612f2, type: 3}
+  blink: {fileID: 21300000, guid: 55950a9dce4e65c45ae21aac8c8c75ad, type: 3}
 --- !u!1 &5127696862455851901
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ public class Companian : MonoBehaviour
     Vector3 offset;
     bool isFound;
     private float nextActionTime = 0.0f;
+    private float nextActionTimeB = 0.0f;
+    public float blinkP = 0.5f;
     public float period = 0.5f;
     public float speed = 2f;
     public float radius = 3f;
@@ -20,6 +22,9 @@ public class Companian : MonoBehaviour
     public Sprite normal;
     public Sprite Happy1;
     public Sprite Happy2;
+    public Sprite blink;
+    int timeCounter;
+    int blinkPeriod;
 
 
     // Start is called before the first frame update
@@ -32,12 +37,15 @@ public class Companian : MonoBehaviour
         FireFly = gameObject.transform.GetChild(1).gameObject;
         sr = FireFly.GetComponent<SpriteRenderer>();
         counterAnim = 0;
+        timeCounter = 0;
+        blinkPeriod = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
         FollowPlayer();
+        Blink();
 
 
     }
@@ -66,8 +74,33 @@ public class Companian : MonoBehaviour
             RotateImage(offset.x);
 
         }
+    }
+    private void Blink()
+    {
+        if (Time.time > nextActionTimeB)
+        {
+            timeCounter++;
 
+            nextActionTimeB += blinkP;
+            if (timeCounter == blinkPeriod)
+            {
+                if (sr.sprite == normal)
+                {
+                    sr.sprite = blink;
+                }
 
+                timeCounter = 0;
+                blinkPeriod = Mathf.RoundToInt(Random.Range(5f, 9f));
+            }
+            else
+            {
+                if (sr.sprite == blink)
+                {
+                    sr.sprite = normal;
+                }
+
+            }
+        }
 
     }
     private void wobbel()
@@ -82,19 +115,19 @@ public class Companian : MonoBehaviour
             if (sr.sprite == Happy2 || sr.sprite == normal)
             {
                 sr.sprite = Happy1;
-                Debug.Log("s1");
+                
             }
             else if(sr.sprite == Happy1)
             {
                 sr.sprite = Happy2;
-                Debug.Log("s2");
+               
             }
             counterAnim++;
         }
         else
         {
             sr.sprite = normal;
-            Debug.Log("sn");
+        
             startHappy = false;
         }
 

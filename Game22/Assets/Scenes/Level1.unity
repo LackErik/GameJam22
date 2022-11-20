@@ -1089,9 +1089,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  period: 2
+  period: 0.5
   normalFly: {fileID: 21300000, guid: 61083f0a6a3212b49b2464b88d4be461, type: 3}
   pushFly: {fileID: 21300000, guid: 6f7ad2c36b9bc7544b24eed6acd4c03b, type: 3}
+  blinkFly: {fileID: 21300000, guid: c602357c518521640b9ae7dc5352882d, type: 3}
+  timeCounter: 0
+  blinkPeriod: 5
 --- !u!58 &857990682
 CircleCollider2D:
   m_ObjectHideFlags: 0
