@@ -7,11 +7,12 @@ public class Move : MonoBehaviour
     public float speed = 10f;
     float xAchse = 0f;
     float yAchse = 0f;
+    private float nextActionTime = 0.0f;
+    public float period = 2f;
     GameObject FireFly;
     SpriteRenderer sr;
     public Sprite normalFly;
     public Sprite pushFly;
-  
     Rigidbody2D rb;
  
 
@@ -28,17 +29,20 @@ public class Move : MonoBehaviour
 
     void Update()
     {
+        if (Time.time > nextActionTime)
+        {
+            nextActionTime += period;
+        }
 
         LookDirection();
         Controlle();
-
-
-
 
     }
 
     private void LookDirection() 
     {
+
+
         if (xAchse > 0)
         {
             FireFly.transform.rotation = new Quaternion(0, 180, 0, 1);
