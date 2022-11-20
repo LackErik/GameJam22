@@ -30,6 +30,7 @@ public class Ball : MonoBehaviour
         
         if (Companian.anzahl >= braucht)
         {
+            GetComponent<CircleCollider2D>().enabled = false;
             eventPass = true;
         }
     }

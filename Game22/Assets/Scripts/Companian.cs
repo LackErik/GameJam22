@@ -140,7 +140,7 @@ public class Companian : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             isFound = true;
-            GetComponent<CircleCollider2D>().enabled = false;
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
             startHappy = true;
             anzahl++;
             audioPlayer.Play();
