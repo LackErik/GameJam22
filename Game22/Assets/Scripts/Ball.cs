@@ -12,7 +12,7 @@ public class Ball : MonoBehaviour
     void Start()
     {
         eventPass = false;
-        Debug.Log(Companian.anzahl);
+        
 
     }
 

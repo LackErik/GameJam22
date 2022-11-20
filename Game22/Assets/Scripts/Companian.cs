@@ -25,6 +25,7 @@ public class Companian : MonoBehaviour
     public Sprite blink;
     int timeCounter;
     int blinkPeriod;
+    AudioSource audioPlayer;
 
 
     // Start is called before the first frame update
@@ -39,6 +40,7 @@ public class Companian : MonoBehaviour
         counterAnim = 0;
         timeCounter = 0;
         blinkPeriod = 3;
+        audioPlayer = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -141,6 +143,7 @@ public class Companian : MonoBehaviour
             GetComponent<CircleCollider2D>().enabled = false;
             startHappy = true;
             anzahl++;
+            audioPlayer.Play();
         }
     
         
