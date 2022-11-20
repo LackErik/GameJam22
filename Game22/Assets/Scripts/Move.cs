@@ -7,19 +7,27 @@ public class Move : MonoBehaviour
     public float speed = 10f;
     float xAchse = 0f;
     float yAchse = 0f;
+    private float nextActionTime = 0.0f;
+    public float period = 3f;
     GameObject FireFly;
     SpriteRenderer sr;
     public Sprite normalFly;
     public Sprite pushFly;
+  
+    Rigidbody2D rb;
+ 
 
     // Start is called before the first frame update
     void Start()
     {
         FireFly = gameObject.transform.GetChild(1).gameObject;
         sr = FireFly.GetComponent<SpriteRenderer>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
+     
     }
 
     // Update is called once per frame
+
     void Update()
     {
         xAchse = Input.GetAxis("Horizontal");
@@ -34,11 +42,17 @@ public class Move : MonoBehaviour
         }
        
             var move = new Vector3(xAchse, yAchse);
-            transform.Translate(move * speed * Time.deltaTime);
+            rb.MovePosition(move * speed * Time.deltaTime+transform.position);
 
-     
+        if (Time.time > nextActionTime)
+        {
+            nextActionTime += Random.Range(3, 6);
+            
+
+        }
 
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
