@@ -8,6 +8,7 @@ public class SpinnennetzScript : MonoBehaviour
     public Sprite netzKaputt;
     public int needed = 8;
     EdgeCollider2D col;
+    public GameObject msgBox;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,17 @@ public class SpinnennetzScript : MonoBehaviour
             col.isTrigger = true;
 
         }
+        if (other.CompareTag("Player") && Companian.anzahl < needed)
+        {
+            msgBox.SetActive(true);
+        }
 
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && Companian.anzahl < needed)
+        {
+            msgBox.SetActive(false);
+        }
     }
 }

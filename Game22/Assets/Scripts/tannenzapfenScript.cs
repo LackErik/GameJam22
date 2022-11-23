@@ -8,6 +8,7 @@ public class tannenzapfenScript : MonoBehaviour
     Vector3 m_YAxis;
     public int needed = 2;
     public float fallspeed = 1.0f;
+    public GameObject msgBox;
     
 
 
@@ -34,6 +35,17 @@ public class tannenzapfenScript : MonoBehaviour
             m_Rigidbody.AddForce(new Vector3(0, -1.0f, 0) * m_Rigidbody.mass * fallspeed);
 
         }
+        if (other.CompareTag("Player") && Companian.anzahl < needed)
+        {
+            msgBox.SetActive(true);
+        }
 
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && Companian.anzahl < needed)
+        {
+            msgBox.SetActive(false);
+        }
     }
 }

@@ -23,7 +23,7 @@ public class froschScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Tannenzapfen"))
+        if (other.name == "Tannenzapfen")
         {
             gameObject.transform.position = new Vector3(30f, -29f, 0f);
             sr.sprite = frogDead;

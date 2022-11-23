@@ -11,9 +11,11 @@ public class Glas : MonoBehaviour
     public Sprite glasStay;
     public Sprite glasFall;
     public GameObject prefab;
-    public GameObject light;
+    public GameObject glasLight;
+    public GameObject msgFinished;
+    public GameObject msgFriend;
 
-   
+
 
     // Start is called before the first frame update
     void Start()
@@ -48,12 +50,25 @@ public class Glas : MonoBehaviour
                 startSpawner();
                 gameObject.GetComponents<BoxCollider2D>()[0].enabled = false;
                 gameObject.GetComponents<BoxCollider2D>()[1].enabled = false;
-                Destroy(light);
+                Destroy(glasLight);
+                msgFinished.SetActive(true);
 
+            }
+            else
+            {
+                msgFriend.SetActive(true);
             }
         }
     }
-  
+   
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            if (Companian.anzahl < braucht) { msgFriend.SetActive(false); }
+              
+        }
+    }
     void startSpawner()
     {
         for (int i = 0; i < 10; i++)

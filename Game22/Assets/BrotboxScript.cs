@@ -8,6 +8,7 @@ public class BrotboxScript : MonoBehaviour
     public Sprite boxOpen;
     public int needed = 3;
     BoxCollider2D col;
+    public GameObject msgBox;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +31,18 @@ public class BrotboxScript : MonoBehaviour
             sr.sortingOrder = 1;
 
         }
+        if (other.CompareTag("Player") && Companian.anzahl < needed)
+        {
+            msgBox.SetActive(true);
+        }
+            
 
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && Companian.anzahl < needed)
+        {
+            msgBox.SetActive(false);
+        }
     }
 }

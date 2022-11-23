@@ -17,6 +17,7 @@ public class Move : MonoBehaviour
     Rigidbody2D rb;
     public int timeCounter;
     public int blinkPeriod;
+    public GameObject msgBox;
 
 
     // Start is called before the first frame update
@@ -92,10 +93,20 @@ public class Move : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         sr.sprite = pushFly;
+        if (collision.gameObject.CompareTag("InteractivObject"))
+        {
+           // msgBox.gameObject.SetActive(true);
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
         sr.sprite = normalFly;
+        if (collision.gameObject.CompareTag("InteractivObject"))
+        {
+           // msgBox.gameObject.SetActive(false);
+        }
     }
+
+   
 
 }
